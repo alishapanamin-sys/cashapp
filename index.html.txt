@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cadastro Gratuito | Iniciativas Sociais em Moçambique</title>
+  <meta name="description" content="Cadastre-se gratuitamente e receba informações sobre iniciativas sociais e oportunidades de participação em Moçambique." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a30;
+      --text:#e9eefc;
+      --muted:#b8c4e6;
+      --line:rgba(255,255,255,.12);
+      --accent:#22c55e;
+      --accent2:#60a5fa;
+      --danger:#fb7185;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius:18px;
+      --max: 1080px;
+      --pad: 18px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(96,165,250,.25), transparent 55%),
+        radial-gradient(900px 500px at 10% -10%, rgba(34,197,94,.22), transparent 60%),
+        linear-gradient(180deg, #070b14, var(--bg));
+      color:var(--text);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px var(--pad) 70px}
+    .topbar{
+      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      padding:10px 0 18px;
+    }
+    .brand{
+      display:flex; gap:10px; align-items:center;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .badge{
+      font-size:12px;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      background:rgba(255,255,255,.04);
+      white-space:nowrap;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:6px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-copy{
+      padding:26px 24px;
+      position:relative;
+      background:
+        radial-gradient(800px 380px at 30% 0%, rgba(34,197,94,.12), transparent 60%),
+        radial-gradient(800px 380px at 80% 20%, rgba(96,165,250,.14), transparent 55%),
+        rgba(255,255,255,.03);
+    }
+    h1{
+      margin:0 0 10px;
+      font-size: clamp(28px, 3.3vw, 44px);
+      line-height:1.08;
+      letter-spacing:-.5px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+      max-width:60ch;
+    }
+    .bullets{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px 14px;
+      padding:0;
+      margin:16px 0 0;
+      list-style:none;
+    }
+    .bullets li{
+      display:flex; gap:10px; align-items:flex-start;
+      color:var(--text);
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
+      font-size:14px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      margin-top:4px;
+      background:linear-gradient(180deg, var(--accent), var(--accent2));
+      flex:0 0 10px;
+    }
+
+    .form-card{
+      padding:18px;
+      background:
+        radial-gradient(900px 500px at 100% 0%, rgba(96,165,250,.18), transparent 60%),
+        rgba(255,255,255,.03);
+    }
+    .form-title{
+      font-size:18px;
+      font-weight:800;
+      margin:2px 0 6px;
+    }
+    .form-sub{
+      color:var(--muted);
+      margin:0 0 12px;
+      font-size:13.5px;
+      line-height:1.55;
+    }
+    label{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      margin:10px 0 6px;
+    }
+    input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(7,11,20,.55);
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    input:focus{border-color: rgba(34,197,94,.65)}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .btn{
+      width:100%;
+      margin-top:14px;
+      padding:13px 14px;
+      border-radius:14px;
+      border:0;
+      font-weight:800;
+      font-size:15px;
+      color:#05210f;
+      background:linear-gradient(180deg, #34d399, var(--accent));
+      cursor:pointer;
+    }
+    .btn:active{transform:translateY(1px)}
+    .fine{
+      margin:10px 0 0;
+      font-size:11.5px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+    .fine a{color:var(--text); text-decoration:underline; text-underline-offset:3px}
+    .status{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:13px;
+      display:none;
+    }
+    .status.ok{display:block; border-color: rgba(34,197,94,.4); color: #d6ffe7}
+    .status.err{display:block; border-color: rgba(251,113,133,.45); color:#ffd6dd}
+
+    .sections{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+    }
+    .mini{
+      padding:16px 16px;
+      min-height:130px;
+      background:rgba(255,255,255,.03);
+    }
+    .mini h3{margin:0 0 6px; font-size:15px}
+    .mini p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.55}
+
+    .footer{
+      margin-top:18px;
+      padding:18px 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .sticky{
+      position:fixed;
+      left:0; right:0; bottom:0;
+      background:rgba(7,11,20,.78);
+      border-top:1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .sticky .inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px var(--pad);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .sticky strong{font-size:13px}
+    .sticky .cta2{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(34,197,94,.5);
+      background:rgba(34,197,94,.12);
+      color:var(--text);
+      font-weight:800;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      .bullets{grid-template-columns:1fr}
+      .sections{grid-template-columns:1fr}
+      .row{grid-template-columns:1fr}
+      .sticky .inner{flex-direction:column; align-items:stretch}
+      .sticky .cta2{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span style="display:inline-flex; width:34px; height:34px; border-radius:12px; align-items:center; justify-content:center; background:rgba(255,255,255,.06); border:1px solid var(--line);">
+          🇲🇿
+        </span>
+        <span>Rede de Iniciativas Sociais</span>
+      </div>
+      <span class="badge">Cadastro gratuito • Leva menos de 1 minuto</span>
+    </div>
+
+    <div class="hero">
+      <section class="card hero-copy">
+        <h1>Participe de iniciativas sociais em Moçambique</h1>
+        <p class="sub">
+          Cadastre-se gratuitamente para receber informações sobre projetos comunitários e oportunidades de participação.
+          Sem compromisso financeiro.
+        </p>
+
+        <ul class="bullets">
+          <li><span class="dot"></span><span>Receba atualizações e novidades sobre iniciativas comunitárias.</span></li>
+          <li><span class="dot"></span><span>Conheça oportunidades de participação e apoio social.</span></li>
+          <li><span class="dot"></span><span>Comunicações claras e opção de descadastro a qualquer momento.</span></li>
+          <li><span class="dot"></span><span>Seus dados ficam protegidos e tratados com cuidado.</span></li>
+        </ul>
+      </section>
+
+      <aside class="card form-card" id="cadastro">
+        <div class="form-title">Fazer cadastro gratuito</div>
+        <p class="form-sub">
+          Preencha seus dados para participar da rede e receber informações sobre iniciativas sociais.
+        </p>
+
+        <!--
+          ✅ INTEGRAÇÃO CPA:
+          - Substitua action pelo seu endpoint / postback / formulário do tracker
+          - Ou capture via JS e envie via fetch para seu servidor
+        -->
+        <form id="leadForm" method="post" action="#">
+          <label for="nome">Nome completo</label>
+          <input id="nome" name="name" type="text" autocomplete="name" required placeholder="Ex: Ana Silva" />
+
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="exemplo@dominio.com" />
+
+          <div class="row">
+            <div>
+              <label for="telefone">Telefone (com DDD)</label>
+              <input id="telefone" name="phone" type="tel" autocomplete="tel" required placeholder="(11) 99999-9999" />
+            </div>
+            <div>
+              <label for="cidade">Cidade</label>
+              <input id="cidade" name="city" type="text" autocomplete="address-level2" required placeholder="Sua cidade" />
+            </div>
+          </div>
+
+          <!-- Hidden fields for tracking -->
+          <input type="hidden" name="utm_source" id="utm_source" />
+          <input type="hidden" name="utm_medium" id="utm_medium" />
+          <input type="hidden" name="utm_campaign" id="utm_campaign" />
+          <input type="hidden" name="utm_content" id="utm_content" />
+          <input type="hidden" name="utm_term" id="utm_term" />
+          <input type="hidden" name="fbclid" id="fbclid" />
+          <input type="hidden" name="landing_url" id="landing_url" />
+
+          <button class="btn" type="submit">Confirmar participação</button>
+
+          <p class="fine">
+            Ao se cadastrar, você concorda em receber comunicações relacionadas a iniciativas sociais.
+            Você pode solicitar descadastro a qualquer momento. Leia nossa
+            <a href="#privacidade">Política de Privacidade</a>.
+          </p>
+
+          <div class="status" id="statusBox" role="status" aria-live="polite"></div>
+        </form>
+      </aside>
+    </div>
+
+    <div class="sections">
+      <section class="card mini">
+        <h3>O que você vai receber</h3>
+        <p>
+          Atualizações sobre projetos comunitários, histórias de impacto e convites para ações e campanhas de participação.
+        </p>
+      </section>
+      <section class="card mini">
+        <h3>Transparência</h3>
+        <p>
+          Comunicação clara sobre a finalidade do cadastro e sobre como entrar em contato com a equipe responsável.
+        </p>
+      </section>
+      <section class="card mini">
+        <h3>Proteção de dados</h3>
+        <p>
+          Coletamos apenas o necessário para contato. Não vendemos seus dados. Você pode pedir remoção quando quiser.
+        </p>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:12px; padding:18px 18px" id="privacidade">
+      <h3 style="margin:0 0 8px; font-size:16px">Política de Privacidade (resumo)</h3>
+      <p style="margin:0; color:var(--muted); font-size:13.5px; line-height:1.65">
+        Utilizamos seus dados (nome, e-mail, telefone e cidade) exclusivamente para enviar comunicações relacionadas a
+        iniciativas sociais e oportunidades de participação. Você pode solicitar acesso, correção ou remoção dos seus dados
+        a qualquer momento pelo canal de contato indicado abaixo.
+      </p>
+      <p style="margin:10px 0 0; color:var(--muted); font-size:13.5px; line-height:1.65">
+        Contato: <strong style="color:var(--text)">suporte@seudominio.com</strong>
+        (substitua pelo seu e-mail real).
+      </p>
+    </section>
+
+    <div class="card footer">
+      <div>© <span id="year"></span> Rede de Iniciativas Sociais — Todos os direitos reservados.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <span class="badge">Sem compromisso financeiro</span>
+        <span class="badge">Descadastro disponível</span>
+        <span class="badge">Mobile-first</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sticky">
+    <div class="inner">
+      <strong>Cadastro gratuito — receba informações sobre iniciativas sociais em Moçambique</strong>
+      <button class="cta2" type="button" onclick="document.getElementById('cadastro').scrollIntoView({behavior:'smooth'})">
+        Fazer cadastro agora
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ---- Helpers ----
+    function qs(name){
+      const url = new URL(window.location.href);
+      return url.searchParams.get(name) || "";
+    }
+    function setVal(id, value){
+      const el = document.getElementById(id);
+      if(el) el.value = value || "";
+    }
+
+    // ---- Fill tracking fields ----
+    setVal("utm_source", qs("utm_source"));
+    setVal("utm_medium", qs("utm_medium"));
+    setVal("utm_campaign", qs("utm_campaign"));
+    setVal("utm_content", qs("utm_content"));
+    setVal("utm_term", qs("utm_term"));
+    setVal("fbclid", qs("fbclid"));
+    setVal("landing_url", window.location.href);
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ---- Basic validation + "thank you" UX (replace with your real submit) ----
+    const form = document.getElementById("leadForm");
+    const statusBox = document.getElementById("statusBox");
+
+    function showStatus(type, msg){
+      statusBox.className = "status " + (type === "ok" ? "ok" : "err");
+      statusBox.textContent = msg;
+    }
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const tel = document.getElementById("telefone").value.trim();
+      const cidade = document.getElementById("cidade").value.trim();
+
+      if(!nome || nome.length < 2) return showStatus("err", "Por favor, informe seu nome completo.");
+      if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showStatus("err", "Por favor, informe um e-mail válido.");
+      if(!tel || tel.replace(/\D/g,'').length < 8) return showStatus("err", "Por favor, informe um telefone válido.");
+      if(!cidade || cidade.length < 2) return showStatus("err", "Por favor, informe sua cidade.");
+
+      // ✅ هنا تربط الـ CPA:
+      // 1) إما تغير action في الفورم وتسمح بالـ POST عادي
+      // 2) أو تبعت البيانات للـ endpoint بتاعك:
+      // fetch("https://SEU-ENDPOINT", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(Object.fromEntries(new FormData(form))) })
+
+      // Demo success message:
+      showStatus("ok", "Cadastro confirmado! Você receberá informações em breve. Obrigado por participar.");
+      form.querySelector("button[type='submit']").disabled = true;
+
+      // Optional: redirect to thank-you page
+      // window.location.href = "obrigado.html";
+    });
+  </script>
+</body>
+</html>
